@@ -38,17 +38,4 @@
 
 # Open singularity image with dependencies
 module load system singularity
-singularity run $PI_HOME/swist_singularity_images/swist_fmri_20180829.img
-
-echo $PATH
-
-# Project directories
-PROJECT_DIR=$PI_SCRATCH/OPUS
-DATA_DIR=$PROJECT_DIR/NIMS_data
-
-# Search for anatomical files
-ANAT_DIRS=`find $DATA_DIR -name "*T1w_9mm_sag*"`
-for d in $ANAT_DIRS; do
-	ANAT_FILE=`find $d -name "*.nii.gz"`
-	python -m pydeface $ANAT_FILE
-done
+singularity run $PI_HOME/OPUS/0_singularity/sll_fmri_20181025.img /bin/bash 00_deface.sh
