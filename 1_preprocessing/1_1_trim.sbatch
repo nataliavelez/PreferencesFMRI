@@ -1,17 +1,17 @@
 #!/bin/bash
-# 1_0_deface.sbatch
-# Searches for anatomical images in raw NIMS data and automatically defaces them
-# Usage: sbatch opus_deface.sbatch
+# 1_1_trim.sbatch
+# Trims first three images from all functional files in project
+# Usage: sbatch 1_1_trim.sbatch
 
 #################
 #set a job name  
-#SBATCH --job-name=deface
+#SBATCH --job-name=trim
 #################  
 #a file for job output, you can check job progress, append the job ID with %j to make it unique
-#SBATCH --output=reports/deface.%j.out
+#SBATCH --output=reports/trim.%j.out
 #################
 # a file for errors from the job
-#SBATCH --error=reports/deface.%j.err
+#SBATCH --error=reports/trim.%j.err
 #################
 #time you think you need; default is 2 hours
 #format could be dd-hh:mm:ss, hh:mm:ss, mm:ss, or mm
@@ -38,4 +38,4 @@
 
 # Open singularity image with dependencies
 module load system singularity
-singularity run $PI_HOME/OPUS/0_singularity/sll_fmri_20181025.img /bin/bash 1_0_deface.sh
+singularity run $PI_HOME/OPUS/0_singularity/sll_fmri_20181025.img /bin/bash 1_1_trim.sh
