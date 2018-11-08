@@ -4,4 +4,5 @@ Analysis scripts
 Directories:
 
 * `0_singularity`: Singularity images (used for running code)
-* `1_preprocessing`: Preprocessing scripts
+* `1_behavioral`: Behavioral analyses + RL model used to generate regressors
+* `2_preprocessing`: Preprocessing scripts
