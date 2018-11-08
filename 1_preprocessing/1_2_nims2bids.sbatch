@@ -1,21 +1,21 @@
 #!/bin/bash
-# 1_1_trim.sbatch
-# Trims first three images from all functional files in project
-# Usage: sbatch 1_1_trim.sbatch
+# 1_2_nims2bids.sbatch
+# Converts data from NIMS to BIDS file structure
+# Usage: sbatch 1_2_nims2bids.sbatch
 
 #################
 #set a job name  
-#SBATCH --job-name=trim
+#SBATCH --job-name=n2b
 #################  
 #a file for job output, you can check job progress, append the job ID with %j to make it unique
-#SBATCH --output=reports/trim.%j.out
+#SBATCH --output=reports/n2b.%j.out
 #################
 # a file for errors from the job
-#SBATCH --error=reports/trim.%j.err
+#SBATCH --error=reports/n2b.%j.err
 #################
 #time you think you need; default is 2 hours
 #format could be dd-hh:mm:ss, hh:mm:ss, mm:ss, or mm
-#SBATCH --time=30
+#SBATCH --time=01:00:00
 #################
 # Quality of Service (QOS); think of it as sending your job into a special queue; --qos=long for with a max job length of 7 days.
 #SBATCH -p normal
@@ -38,5 +38,5 @@
 
 # Open singularity image with dependencies
 module load system singularity
-SIMG=$PI_HOME/singularity/sll_fmri_20181028.img
-singularity run $SIMG /bin/bash 1_1_trim.sh
+SIMG=$PI_HOME/singularity/sll_fmri_20181028.img 
+singularity run $SIMG /bin/bash 1_2_nims2bids.sh

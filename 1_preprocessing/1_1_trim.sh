@@ -23,7 +23,11 @@ for d in $FUNC_DIRS; do
 	# Trim functional image
 	echo "Command: fslroi $IN_F $OUT_F $N_TRIM $T_SIZE"
 	fslroi $IN_F $OUT_F $N_TRIM $T_SIZE
+	
+	# Remove intermediate file
+	rm -f $IN_F
 
+	# Clear environment
 	unset IN_F
 	unset OUT_F
 	unset T_IN

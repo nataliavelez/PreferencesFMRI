@@ -15,7 +15,7 @@
 #################
 #time you think you need; default is 2 hours
 #format could be dd-hh:mm:ss, hh:mm:ss, mm:ss, or mm
-#SBATCH --time=30
+#SBATCH --time=01:00:00
 #################
 # Quality of Service (QOS); think of it as sending your job into a special queue; --qos=long for with a max job length of 7 days.
 #SBATCH -p normal
@@ -38,4 +38,5 @@
 
 # Open singularity image with dependencies
 module load system singularity
-singularity run $PI_HOME/OPUS/0_singularity/sll_fmri_20181025.img /bin/bash 1_0_deface.sh
+SIMG=$PI_HOME/singularity/sll_fmri_20181028.img
+singularity run $SIMG /bin/bash 1_0_deface.sh

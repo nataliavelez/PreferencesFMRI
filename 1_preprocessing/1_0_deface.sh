@@ -12,4 +12,7 @@ for d in $ANAT_DIRS; do
         ANAT_FILE=`find $d -name "*.nii.gz"`
 	echo "Defacing $ANAT_FILE..."
         python -m pydeface $ANAT_FILE
+
+	# Remove unanonymized file
+	rm -f $ANAT_FILE
 done
