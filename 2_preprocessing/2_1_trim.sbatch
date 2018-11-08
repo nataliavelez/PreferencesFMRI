@@ -1,7 +1,7 @@
 #!/bin/bash
-# 1_1_trim.sbatch
+# 2_1_trim.sbatch
 # Trims first three images from all functional files in project
-# Usage: sbatch 1_1_trim.sbatch
+# Usage: sbatch 2_1_trim.sbatch
 
 #################
 #set a job name  
@@ -39,4 +39,4 @@
 # Open singularity image with dependencies
 module load system singularity
 SIMG=$PI_HOME/singularity/sll_fmri_20181028.img
-singularity run $SIMG /bin/bash 1_1_trim.sh
+singularity run $SIMG /bin/bash 2_1_trim.sh

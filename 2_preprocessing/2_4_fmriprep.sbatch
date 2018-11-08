@@ -1,7 +1,7 @@
 #!/bin/bash
 #SWIST_SUBJ_FMRIPREP
 #Runs FMRIPREP on a sngle participant
-#Usage: sbatch swist_subj_fmriprep.sbatch [SUBJECT_ID]
+#Usage: sbatch 2_4_fmriprep.sbatch [SUBJECT_ID]
 
 #################
 #set a job name  

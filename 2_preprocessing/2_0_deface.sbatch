@@ -1,7 +1,7 @@
 #!/bin/bash
-# 1_0_deface.sbatch
+# 2_0_deface.sbatch
 # Searches for anatomical images in raw NIMS data and automatically defaces them
-# Usage: sbatch opus_deface.sbatch
+# Usage: sbatch 2_0_deface.sbatch
 
 #################
 #set a job name  
@@ -39,4 +39,4 @@
 # Open singularity image with dependencies
 module load system singularity
 SIMG=$PI_HOME/singularity/sll_fmri_20181028.img
-singularity run $SIMG /bin/bash 1_0_deface.sh
+singularity run $SIMG /bin/bash 2_0_deface.sh
