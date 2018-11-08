@@ -3,3 +3,4 @@
 *.err
 reports/
 scratch/
+.DS_Store
