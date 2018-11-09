@@ -45,8 +45,8 @@ FMRIPREP_IMG=$PI_HOME/singularity/fmriprep_1.1.6.img
 # Build call to fmriprep
 PROJECT_DIR=$PI_SCRATCH/OPUS
 BIDS_DIR=$PROJECT_DIR/BIDS_data
-OUT_DIR=$BIDS_DIR/derivatives
-WORKING_DIR=$PROJECT_DIR/cache/fmriprep
+OUT_DIR=$PROJECT_DIR/derivatives
+WORKING_DIR=$PROJECT_DIR/work/fmriprep
 SUBJECT=$1
 
 # Freesurfer license
