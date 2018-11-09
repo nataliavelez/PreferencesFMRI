@@ -5,3 +5,4 @@ reports/
 scratch/
 .DS_Store
 .Rhistory
+*-checkpoint.ipynb

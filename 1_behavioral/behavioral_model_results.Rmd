@@ -77,7 +77,7 @@ for (f in test_files) {
   tmp_run = str_extract(f, '(?<=test\\.)[0-9]')
   tmp_run = as.numeric(tmp_run)
   
-  tmp_f = file.path(train_dir, f)
+  tmp_f = file.path(test_dir, f)
   
   tmp_data = read_tsv(tmp_f) %>%
     mutate(subject = tmp_id,
@@ -94,11 +94,13 @@ for (f in test_files) {
            response_time = rt) %>%
     select(c(subject, run, trial, onset, duration, trial_type, response_time, choice, outcome, value_chosen, value_unchosen, everything()))
   
-  train_data = plyr::rbind.fill(train_data, tmp_data)
+  test_data = plyr::rbind.fill(test_data, tmp_data)
   
    rm(list = grep('^tmp', ls(), value=T))
 }
 rm(list = c('f'))
+
+head(test_data)
 ```
 
 Load simulated agent weights:
@@ -140,13 +142,48 @@ head(train_features)
 ```
 
 ## Convergence during training phase
-Accuracy during training phase:
+Summarize accuracy:
 ```{r}
 train_accuracy = train_data %>%
   drop_na(outcome) %>%
-  group_by(subject) %>%
+  group_by(subject, trial_type) %>%
   summarise(accuracy = mean(outcome))
+
+test_accuracy = test_data %>%
+  drop_na(outcome) %>%
+  group_by(subject, trial_type) %>%
+  summarise(accuracy = mean(outcome))
+
+other_accuracy = rbind(train_accuracy, test_accuracy) %>%
+  mutate(trial_type = factor(trial_type, levels = c('train', 'test')))
+
+ggplot(other_accuracy, aes(x = accuracy, color = trial_type, fill = trial_type)) +
+  geom_vline(xintercept = 0.5, linetype='dotted') +
+  geom_histogram(alpha = 0.5) +
+  geom_density(fill = NA) +
+  facet_grid(. ~ trial_type) + 
+  guides(color = F, fill = F) +
+  theme_few(base_size = 18) +
+  xlim(c(0, 1)) +
+  xlab('Accuracy') +
+  ylab('Density')
 ```
+On average, participants were above chance in both train and test.
+
+```{r}
+other_accuracy_wide = other_accuracy %>%
+  spread(trial_type, accuracy)
+
+ggplot(other_accuracy_wide, aes(x = train, y = test)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, linetype = 'dashed') +
+  theme_few(base_size = 18) +
+  xlab('Accuracy during training') +
+  ylab('Accuracy at test') +
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+Accuracy during training correlates with later accuracy during test. (Also, note that not all points are below the diagonal—some people are doing worse at test, but not all.)
 
 Plot weights over time:
 ```{r}
@@ -170,11 +207,12 @@ plot_convergence = function(s) {
 subjects = sprintf('sll_opusfmri_%02d', 1:8)
 for (s in subjects) {
   p = plot_convergence(s)
-  ggsave(sprintf('plots/train_weights_%s.png', s), plot = p, width=6, height=4)
+  ggsave(sprintf('plots/model_train_%s.png', s), plot = p, width=6, height=4)
 }
 
 plot_convergence(subjects[1])
 ```
+
 
 Cosine similarity between final model weights and true weights:
 ```{r}
@@ -205,5 +243,4 @@ ggplot(train_final, aes(x = accuracy, y = similarity)) +
   xlab('Accuracy in training phase') +
   ylab('Similarity')
 ```
-
-**Takeaway:** The more accurately participants respond during the training phase, the closer their responses are to the ground-truth values. (Also: everyone had above-chance performance in the training phase, which is nice!)
+The more accurately participants respond during the training phase, the closer their responses are to the ground-truth values.
