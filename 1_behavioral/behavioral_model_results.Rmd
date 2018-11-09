@@ -141,7 +141,30 @@ train_features = train_data %>%
 head(train_features)
 ```
 
-## Convergence during training phase
+## Behavioral accuracy
+Accuracy by trial
+```{r}
+other_data = train_data %>%
+  select(colnames(test_data)) %>%
+  rbind(., test_data) %>%
+  filter(subject != 'sll_opusfmri_02') %>%
+  mutate(trial_type = factor(trial_type, levels = c('train', 'test'))) %>%
+  arrange(subject, trial_type, run, trial) %>%
+  group_by(subject, trial_type) %>%
+  mutate(trial = 1:n()) %>%
+  ungroup() %>%
+  select(c(subject, trial_type, trial, outcome))
+
+ggplot(other_data, aes(x = trial, y = outcome, color = trial_type, fill = trial_type)) +
+  geom_hline(yintercept = 0.5, linetype = 'dashed') +
+  stat_smooth(method='loess') +
+  facet_grid(. ~ trial_type) +
+  xlab('Trial #') +
+  ylab('Accuracy') +
+  theme_few(base_size = 18) +
+  guides(color = F, fill = F)
+```
+
 Summarize accuracy:
 ```{r}
 train_accuracy = train_data %>%
@@ -184,6 +207,8 @@ ggplot(other_accuracy_wide, aes(x = train, y = test)) +
   ylim(c(0,1))
 ```
 Accuracy during training correlates with later accuracy during test. (Also, note that not all points are below the diagonal—some people are doing worse at test, but not all.)
+
+## Convergence in model weights during training
 
 Plot weights over time:
 ```{r}
