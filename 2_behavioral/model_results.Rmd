@@ -1,0 +1,209 @@
+---
+title: "RL model results"
+author: "Natalia Vélez, Yuan Chang Leong, Jamil Zaki, Hyowon Gweon"
+date: "11/8/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(ggthemes)
+require(RColorBrewer)
+require(R.matlab)
+dims = c('valence', 'setting', 'genre')
+```
+
+Data files:
+```{r}
+model_dir = 'model_RL'
+
+# Self phase
+self_dir = file.path(model_dir, 'self_phase')
+self_files = list.files(self_dir)
+
+# Training phase
+train_dir = file.path(model_dir, 'training_phase_RL')
+train_files = list.files(train_dir)
+
+# Test phase
+test_dir = file.path(model_dir, 'testing_phase_RL')
+test_files = list.files(test_dir)
+
+# Simulated agent weights
+sim_dir = '../../inlab/sim_data/'
+sim_files = list.files(sim_dir)
+```
+
+Load training data:
+```{r}
+train_data = NULL
+
+for (f in train_files) {
+  tmp_id = str_extract(f, 'sll_opusfmri_[0-9]+')
+  tmp_run = str_extract(f, '(?<=train\\.)[0-9]')
+  tmp_run = as.numeric(tmp_run)
+  
+  tmp_f = file.path(train_dir, f)
+  
+  tmp_data = read_tsv(tmp_f) %>%
+    mutate(subject = tmp_id,
+           run = tmp_run,
+           trial = 1:n(),
+           value_unchosen = ifelse(choice == 1, Value1, Value2),
+           trial_type = 'train') %>%
+    rename(value_chosen = Value_c,
+           value_left = Value1,
+           value_right = Value2,
+           valence = W1,
+           setting = W2,
+           genre = W3,
+           response_time = rt) %>%
+    select(c(subject, run, trial, onset, duration, trial_type, response_time, choice, outcome, value_chosen, value_unchosen, everything()))
+  
+  train_data = plyr::rbind.fill(train_data, tmp_data)
+  
+   rm(list = grep('^tmp', ls(), value=T))
+}
+rm(list = c('f'))
+```
+
+Load test data:
+```{r}
+test_data = NULL
+
+for (f in test_files) {
+  tmp_id = str_extract(f, 'sll_opusfmri_[0-9]+')
+  tmp_run = str_extract(f, '(?<=test\\.)[0-9]')
+  tmp_run = as.numeric(tmp_run)
+  
+  tmp_f = file.path(train_dir, f)
+  
+  tmp_data = read_tsv(tmp_f) %>%
+    mutate(subject = tmp_id,
+           run = tmp_run,
+           trial = 1:n(),
+           value_unchosen = ifelse(choice == 1, Value1, Value2),
+           trial_type = 'test') %>%
+    rename(value_chosen = Value_c,
+           value_left = Value1,
+           value_right = Value2,
+           valence = W1,
+           setting = W2,
+           genre = W3,
+           response_time = rt) %>%
+    select(c(subject, run, trial, onset, duration, trial_type, response_time, choice, outcome, value_chosen, value_unchosen, everything()))
+  
+  train_data = plyr::rbind.fill(train_data, tmp_data)
+  
+   rm(list = grep('^tmp', ls(), value=T))
+}
+rm(list = c('f'))
+```
+
+Load simulated agent weights:
+```{r}
+sim_data = NULL
+
+for (f in sim_files) {
+  tmp_f = file.path(sim_dir, f)
+  tmp_id = str_extract(f, 'sll_opusfmri_[0-9]+')
+  tmp_sim = readMat(tmp_f)$sim.agent
+  tmp_weights = setNames(tmp_sim[,,1]$sim.weights, dims)
+  
+  tmp_data = data.frame(as.list(tmp_weights)) %>%
+    mutate(subject = tmp_id) %>%
+    select(c(subject, everything())) %>%
+    gather(dimension, truth, valence:genre) %>%
+    mutate(dimension = factor(dimension, levels = dims))
+  
+  sim_data = plyr::rbind.fill(sim_data, tmp_data)
+  
+  rm(list = grep('^tmp', ls(), value=T))
+}
+
+rm(list = c('f'))
+```
+
+Features only:
+```{r}
+train_features = train_data %>%
+  group_by(subject) %>%
+  mutate(trial = 1:n()) %>%
+  ungroup() %>%
+  select(c(subject, trial, valence:genre)) %>%
+  gather(dimension, estimate, valence:genre) %>%
+  mutate(dimension = factor(dimension, levels = dims)) %>%
+  arrange(subject, trial, dimension)
+
+head(train_features)
+```
+
+## Convergence during training phase
+Accuracy during training phase:
+```{r}
+train_accuracy = train_data %>%
+  drop_na(outcome) %>%
+  group_by(subject) %>%
+  summarise(accuracy = mean(outcome))
+```
+
+Plot weights over time:
+```{r}
+plot_convergence = function(s) {
+  subj_train = train_features %>% filter(subject == s) %>% drop_na()
+  subj_truth = sim_data %>% filter(subject == s)
+
+  convergence_plot = ggplot(subj_train, aes(x = trial, y = estimate, color = dimension, group = dimension)) +
+    geom_line(size=1.5) +
+    geom_hline(data = subj_truth, aes(yintercept=truth, color = dimension), size=1, linetype = 'dashed') +
+    theme_few(base_size = 18) +
+    xlab('Trial') +
+    ylab('Estimate') +
+    ggtitle(sprintf('Subject: %s', s)) +
+    scale_color_brewer('Dimension', labels = c('Valence', 'Setting', 'Genre'), palette = 'Set2') +
+    theme(plot.title = element_text(hjust=0.5))
+  
+  return(convergence_plot)
+}
+
+subjects = sprintf('sll_opusfmri_%02d', 1:8)
+for (s in subjects) {
+  p = plot_convergence(s)
+  ggsave(sprintf('plots/train_weights_%s.png', s), plot = p, width=6, height=4)
+}
+
+plot_convergence(subjects[1])
+```
+
+Cosine similarity between final model weights and true weights:
+```{r}
+cosine_similarity = function(v1, v2) {
+  dotprod = sum(v1*v2)
+  mag = sqrt(sum(v1^2)+sum(v2^2))
+  sim = dotprod/mag
+  return(sim)
+}
+
+train_final = train_features %>%
+  group_by(subject) %>%
+  filter(trial == max(trial)) %>%
+  select(-trial) %>%
+  left_join(sim_data, by=c('subject', 'dimension')) %>%
+  summarise(similarity = cosine_similarity(estimate, truth)) %>%
+  left_join(train_accuracy, by = 'subject')
+
+train_final
+```
+
+Relate similarity to true weights vs. behavioral accuracy:
+```{r}
+ggplot(train_final, aes(x = accuracy, y = similarity)) +
+  geom_point() +
+  geom_smooth(method='lm', se=F) +
+  theme_few(base_size=18) +
+  xlab('Accuracy in training phase') +
+  ylab('Similarity')
+```
+
+**Takeaway:** The more accurately participants respond during the training phase, the closer their responses are to the ground-truth values. (Also: everyone had above-chance performance in the training phase, which is nice!)
