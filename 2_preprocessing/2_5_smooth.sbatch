@@ -8,10 +8,10 @@
 #SBATCH --job-name=smoothing
 #################  
 #a file for job output, you can check job progress, append the job ID with %j to make it unique
-#SBATCH --output=sbatch_reports/smoothing.%j.out
+#SBATCH --output=reports/smoothing.%j.out
 #################
 # a file for errors from the job
-#SBATCH --error=sbatch_reports/smoothing.%j.err
+#SBATCH --error=reports/smoothing.%j.err
 #################
 #time you think you need; default is 2 hours
 #format could be dd-hh:mm:ss, hh:mm:ss, mm:ss, or mm
@@ -34,7 +34,7 @@
 # Also, if you submit hundreds of jobs at once you will get hundreds of emails.
 #SBATCH --mail-type=END,FAIL # notifications for job done & fail
 # Remember to change this to your email
-##SBATCH --mail-user=YourSUNetID@stanford.edu
+#SBATCH --mail-user=nvelez@stanford.edu
 
 module load biology fsl
 
@@ -43,7 +43,7 @@ FWHM=4.0
 KERNEL=`echo "$FWHM/2.3548" | bc -l`
 
 # List directories
-PROJECT_DIR=$SCRATCH/$1/BIDS_data
+PROJECT_DIR=$PI_SCRATCH/$1/BIDS_data
 IN_DIR=$PROJECT_DIR/derivatives/fmriprep
 OUT_DIR=$PROJECT_DIR/derivatives/smooth_fmriprep
 SUBJ_DIR=$OUT_DIR/$2
@@ -63,7 +63,7 @@ if [ ! -d "$SUBJ_DIR" ]; then
 fi
 
 # Get all functional files
-IN_FILES=`find $IN_DIR/$2/func/*preproc.nii.gz`
+IN_FILES=`find $IN_DIR/$2/func/*preproc_bold.nii.gz`
 
 for IN_FILE in $IN_FILES; do
 	# Copy original functional file to new directory
@@ -73,7 +73,7 @@ for IN_FILE in $IN_FILES; do
 	echo "=== Processing: $BASE_FILE ==="
 
 	# Copy mask to new directory
-	IN_MASK=${IN_FILE/preproc/brainmask}
+	IN_MASK=${IN_FILE/preproc_bold/brain_mask}
 	BASE_MASK=`basename $IN_MASK`
 	MASK=$FUNC_DIR/$BASE_MASK
 	cp $IN_MASK $MASK

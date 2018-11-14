@@ -40,12 +40,12 @@ ml load system
 ml load singularity
 
 # Get singularity image
-FMRIPREP_IMG=$PI_HOME/singularity/fmriprep_1.1.6.img
+FMRIPREP_IMG=$PI_HOME/singularity/fmriprep_1.2.1.img
 
 # Build call to fmriprep
 PROJECT_DIR=$PI_SCRATCH/OPUS
 BIDS_DIR=$PROJECT_DIR/BIDS_data
-OUT_DIR=$PROJECT_DIR/derivatives
+OUT_DIR=$BIDS_DIR/derivatives
 WORKING_DIR=$PROJECT_DIR/work/fmriprep
 SUBJECT=$1
 
@@ -61,6 +61,6 @@ printf "[DEBUG] Saving output to: %s\n" $OUT_DIR
 singularity run --bind $BIDS_DIR:$BIDS_DIR $FMRIPREP_IMG \
 	$BIDS_DIR $OUT_DIR participant \
 	--participant-label $SUBJECT -w $WORKING_DIR \
-	--nthreads 2 --omp-nthreads 4 --mem-mb 64000 \
+	--nthreads 4 --omp-nthreads 4 --mem-mb 64000 \
 	--fs-no-reconall
 	#--fs-license-file $FS_LICENSE
