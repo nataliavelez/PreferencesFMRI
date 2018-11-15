@@ -1,57 +1,57 @@
-onset	duration	trial_type	rt	choice	self_value1	self_value2	self_value_c
-4.017	0.000	self	1.061	1	-0.015	0.269	-0.015
-13.450	0.000	self	0.622	2	-0.547	0.831	0.831
-21.033	0.000	self	1.110	2	-0.015	0.015	0.015
-30.683	0.000	self	1.030	2	-0.015	0.831	0.831
-39.600	0.000	self	0.838	2	0.015	0.831	0.831
-48.183	0.000	self	0.721	2	-0.831	0.269	0.269
-57.450	0.000	self	1.110	1	0.547	-0.547	0.547
-64.500	0.000	self	1.738	1	0.547	-0.015	0.547
-74.100	0.000	self	0.906	1	0.831	0.269	0.831
-83.417	0.000	self	1.069	1	0.547	0.269	0.547
-93.083	0.000	self	1.412	2	0.547	0.831	0.831
-101.150	0.000	self	1.943	2	-0.547	-0.269	-0.269
-109.383	0.000	self	1.479	2	0.015	0.269	0.269
-118.650	0.000	self	1.875	1	-0.547	-0.831	-0.547
-127.983	0.000	self	1.402	2	-0.269	0.547	0.547
-137.883	0.000	self	1.014	2	-0.831	0.831	0.831
-145.683	0.000	self	1.985	2	0.269	0.015	0.015
-153.567	0.000	self	1.044	2	0.015	0.269	0.269
-160.967	0.000	self	0.820	1	0.831	-0.831	0.831
-168.183	0.000	self	1.203	2	-0.269	0.831	0.831
-178.117	0.000	self	1.083	1	-0.547	-0.269	-0.547
-185.533	0.000	self	1.062	1	0.015	-0.269	0.015
-193.517	0.000	self	1.008	2	-0.831	-0.015	-0.015
-203.417	0.000	self	1.269	2	-0.831	-0.269	-0.269
-210.500	0.000	self	1.253	2	-0.547	-0.015	-0.015
-217.867	0.000	self	1.020	1	0.269	-0.269	0.269
-227.833	0.000	self	2.056	2	-0.831	-0.015	-0.015
-237.083	0.000	self	0.937	1	0.831	-0.547	0.831
-246.867	0.000	self	1.044	2	-0.269	0.269	0.269
-254.683	0.000	self	1.003	1	-0.015	0.547	-0.015
-263.867	0.000	self	1.033	2	0.015	0.547	0.547
-272.533	0.000	self	1.427	2	-0.831	-0.547	-0.547
-282.033	0.000	self	1.072	1	0.269	-0.831	0.269
-289.767	0.000	self	0.771	2	-0.269	0.269	0.269
-297.167	0.000	self	1.274	1	0.015	-0.547	0.015
-305.017	0.000	self	0.833	2	-0.831	0.831	0.831
-312.867	0.000	self	1.603	1	0.547	-0.547	0.547
-320.200	0.000	self	1.409	1	0.269	0.547	0.269
-328.100	0.000	self	1.029	2	-0.269	0.015	0.015
-336.067	0.000	self	1.229	2	-0.269	-0.015	-0.015
-343.417	0.000	self	1.001	2	-0.015	0.269	0.269
-350.867	0.000	self	2.153	1	0.831	-0.269	0.831
-359.667	0.000	self	1.078	1	0.015	-0.269	0.015
-366.683	0.000	self	0.876	2	-0.269	0.547	0.547
-373.683	0.000	self	0.890	1	-0.269	-0.831	-0.269
-383.000	0.000	self	0.920	2	-0.831	0.547	0.547
-392.333	0.000	self	1.291	2	-0.547	0.015	0.015
-401.217	0.000	self	2.437	2	0.015	0.547	0.547
-409.117	0.000	self	1.041	2	0.831	0.269	0.269
-417.867	0.000	self	1.151	2	-0.015	0.547	0.547
-425.800	0.000	self	1.742	1	0.831	-0.831	0.831
-435.500	0.000	self	1.123	2	-0.269	-0.547	-0.547
-443.784	0.000	self	0.793	1	-0.547	-0.831	-0.547
-451.983	0.000	self	0.887	2	-0.547	0.269	0.269
-459.600	0.000	self	0.737	1	0.831	-0.269	0.831
-469.117	0.000	self	0.960	2	0.269	0.831	0.831
+onset	duration	trial_type	response_time	choice	self_value_c	self_value1	self_value2	stim_1	valence_1	setting_1	genre_1	stim_2	valence_2	setting_2	genre_2
+4.017	0.000	self	1.061	1	-0.015	-0.015	0.269	31	negative	futuristic	action	27	negative	futuristic	romance
+13.450	0.000	self	0.622	2	0.831	-0.548	0.831	19	negative	historical	romance	11	positive	futuristic	romance
+21.033	0.000	self	1.110	2	0.015	-0.015	0.015	30	negative	futuristic	action	3	positive	historical	romance
+30.683	0.000	self	1.030	2	0.831	-0.015	0.831	31	negative	futuristic	action	11	positive	futuristic	romance
+39.600	0.000	self	0.838	2	0.831	0.015	0.831	3	positive	historical	romance	11	positive	futuristic	romance
+48.183	0.000	self	0.721	2	0.269	-0.831	0.269	24	negative	historical	action	27	negative	futuristic	romance
+57.450	0.000	self	1.110	1	0.548	0.548	-0.548	13	positive	futuristic	action	17	negative	historical	romance
+64.500	0.000	self	1.738	1	0.548	0.548	-0.015	13	positive	futuristic	action	31	negative	futuristic	action
+74.100	0.000	self	0.906	1	0.831	0.831	0.269	11	positive	futuristic	romance	26	negative	futuristic	romance
+83.417	0.000	self	1.069	1	0.548	0.548	0.269	13	positive	futuristic	action	27	negative	futuristic	romance
+93.083	0.000	self	1.412	2	0.831	0.548	0.831	13	positive	futuristic	action	11	positive	futuristic	romance
+101.150	0.000	self	1.943	2	-0.269	-0.548	-0.269	19	negative	historical	romance	8	positive	historical	action
+109.383	0.000	self	1.479	2	0.269	0.015	0.269	4	positive	historical	romance	26	negative	futuristic	romance
+118.650	0.000	self	1.875	1	-0.548	-0.548	-0.831	17	negative	historical	romance	21	negative	historical	action
+127.983	0.000	self	1.402	2	0.548	-0.269	0.548	6	positive	historical	action	13	positive	futuristic	action
+137.883	0.000	self	1.014	2	0.831	-0.831	0.831	24	negative	historical	action	9	positive	futuristic	romance
+145.683	0.000	self	1.985	2	0.015	0.269	0.015	27	negative	futuristic	romance	4	positive	historical	romance
+153.567	0.000	self	1.044	2	0.269	0.015	0.269	3	positive	historical	romance	26	negative	futuristic	romance
+160.967	0.000	self	0.820	1	0.831	0.831	-0.831	11	positive	futuristic	romance	24	negative	historical	action
+168.183	0.000	self	1.203	2	0.831	-0.269	0.831	6	positive	historical	action	9	positive	futuristic	romance
+178.117	0.000	self	1.083	1	-0.548	-0.548	-0.269	17	negative	historical	romance	6	positive	historical	action
+185.533	0.000	self	1.062	1	0.015	0.015	-0.269	4	positive	historical	romance	6	positive	historical	action
+193.517	0.000	self	1.008	2	-0.015	-0.831	-0.015	24	negative	historical	action	30	negative	futuristic	action
+203.417	0.000	self	1.269	2	-0.269	-0.831	-0.269	21	negative	historical	action	8	positive	historical	action
+210.500	0.000	self	1.253	2	-0.015	-0.548	-0.015	17	negative	historical	romance	31	negative	futuristic	action
+217.867	0.000	self	1.020	1	0.269	0.269	-0.269	26	negative	futuristic	romance	6	positive	historical	action
+227.833	0.000	self	2.056	2	-0.015	-0.831	-0.015	21	negative	historical	action	30	negative	futuristic	action
+237.083	0.000	self	0.937	1	0.831	0.831	-0.548	11	positive	futuristic	romance	17	negative	historical	romance
+246.867	0.000	self	1.044	2	0.269	-0.269	0.269	8	positive	historical	action	27	negative	futuristic	romance
+254.683	0.000	self	1.003	1	-0.015	-0.015	0.548	31	negative	futuristic	action	16	positive	futuristic	action
+263.867	0.000	self	1.033	2	0.548	0.015	0.548	3	positive	historical	romance	13	positive	futuristic	action
+272.533	0.000	self	1.427	2	-0.548	-0.831	-0.548	21	negative	historical	action	19	negative	historical	romance
+282.033	0.000	self	1.072	1	0.269	0.269	-0.831	26	negative	futuristic	romance	21	negative	historical	action
+289.767	0.000	self	0.771	2	0.269	-0.269	0.269	8	positive	historical	action	26	negative	futuristic	romance
+297.167	0.000	self	1.274	1	0.015	0.015	-0.548	3	positive	historical	romance	19	negative	historical	romance
+305.017	0.000	self	0.833	2	0.831	-0.831	0.831	21	negative	historical	action	11	positive	futuristic	romance
+312.867	0.000	self	1.603	1	0.548	0.548	-0.548	16	positive	futuristic	action	17	negative	historical	romance
+320.200	0.000	self	1.409	1	0.269	0.269	0.548	26	negative	futuristic	romance	16	positive	futuristic	action
+328.100	0.000	self	1.029	2	0.015	-0.269	0.015	8	positive	historical	action	4	positive	historical	romance
+336.067	0.000	self	1.229	2	-0.015	-0.269	-0.015	8	positive	historical	action	31	negative	futuristic	action
+343.417	0.000	self	1.001	2	0.269	-0.015	0.269	30	negative	futuristic	action	26	negative	futuristic	romance
+350.867	0.000	self	2.153	1	0.831	0.831	-0.269	9	positive	futuristic	romance	8	positive	historical	action
+359.667	0.000	self	1.078	1	0.015	0.015	-0.269	3	positive	historical	romance	6	positive	historical	action
+366.683	0.000	self	0.876	2	0.548	-0.269	0.548	8	positive	historical	action	16	positive	futuristic	action
+373.683	0.000	self	0.890	1	-0.269	-0.269	-0.831	6	positive	historical	action	24	negative	historical	action
+383.000	0.000	self	0.920	2	0.548	-0.831	0.548	21	negative	historical	action	13	positive	futuristic	action
+392.333	0.000	self	1.291	2	0.015	-0.548	0.015	17	negative	historical	romance	3	positive	historical	romance
+401.217	0.000	self	2.437	2	0.548	0.015	0.548	4	positive	historical	romance	13	positive	futuristic	action
+409.117	0.000	self	1.041	2	0.269	0.831	0.269	9	positive	futuristic	romance	26	negative	futuristic	romance
+417.867	0.000	self	1.151	2	0.548	-0.015	0.548	30	negative	futuristic	action	16	positive	futuristic	action
+425.800	0.000	self	1.742	1	0.831	0.831	-0.831	9	positive	futuristic	romance	21	negative	historical	action
+435.500	0.000	self	1.123	2	-0.548	-0.269	-0.548	8	positive	historical	action	17	negative	historical	romance
+443.784	0.000	self	0.793	1	-0.548	-0.548	-0.831	17	negative	historical	romance	24	negative	historical	action
+451.983	0.000	self	0.887	2	0.269	-0.548	0.269	17	negative	historical	romance	26	negative	futuristic	romance
+459.600	0.000	self	0.737	1	0.831	0.831	-0.269	11	positive	futuristic	romance	6	positive	historical	action
+469.117	0.000	self	0.960	2	0.831	0.269	0.831	27	negative	futuristic	romance	11	positive	futuristic	romance

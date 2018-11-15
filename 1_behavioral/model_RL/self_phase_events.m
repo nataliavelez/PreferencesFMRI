@@ -203,11 +203,27 @@ for s = 1
         outfile = sprintf('self_phase/%s.tsv',behav_path(r).name(1:end-4));
         o = fopen(outfile,'w+');
         
-        fprintf(o, 'onset\tduration\ttrial_type\trt\tchoice\tself_value1\tself_value2\tself_value_c\n');
+        fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\tself_value_c\tself_value1\tself_value2\tstim_1\tvalence_1\tsetting_1\tgenre_1\tstim_2\tvalence_2\tsetting_2\tgenre_2\n');
         
         for t = 1:length(options)
-            fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\n', ...
-                onsets(t,:), 0, 'self',rt(t,:),choice(t,:),self_value1(t,:),self_value2(t,:),self_value_c(t,:));
+            % print first round of stuff
+            fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t', ...
+                onsets(t,:), 0, 'self',rt(t,:),choice(t,:),self_value_c(t,:),self_value1(t,:),self_value2(t,:));
+            
+            stim_1 = options(t,1);
+            valence_1 = movies(stim_1).valence;
+            setting_1 = movies(stim_1).setting;
+            genre_1 = movies(stim_1).genre;
+
+            stim_2 = options(t,2);
+            valence_2 = movies(stim_2).valence;
+            setting_2 = movies(stim_2).setting;
+            genre_2 = movies(stim_2).genre;
+            
+            % print second round of stuff
+            fprintf(o,'%i\t%s\t%s\t%s\t%i\t%s\t%s\t%s\n', ...
+                stim_1, valence_1, setting_1, genre_1, stim_2, valence_2, setting_2, genre_2);
+   
         end
         
         fclose(o);
