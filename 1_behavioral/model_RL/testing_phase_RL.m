@@ -47,7 +47,10 @@ for s = 1
          rt = thisData.Data.rt';
          choice = thisData.Data.subject_choice';
          outcome = thisData.Data.correct';
-         W = Fit.latents.W(end,:);
+         
+         last_valid_trial = max(find(~isnan(Fit.latents.W(:,1))));
+         
+         W = Fit.latents.W(last_valid_trial,:);
 
          % get options
          options = thisData.Data.options;
@@ -78,11 +81,25 @@ for s = 1
          outfile = sprintf('testing_phase_RL/%s.tsv',behav_path(r).name(1:end-4));
          o = fopen(outfile,'w+');
          
-         fprintf(o, 'onset\tduration\ttrial_type\trt\tchoice\toutcome\tValue1\tValue2\tValue_c\tW1\tW2\tW3\n');
+         fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\toutcome\tValue_c\tValue1\tValue2\tW1\tW2\tW3\tstim_1\tvalence_1\tsetting_1\tgenre_1\tstim_2\tvalence_2\tsetting_2\tgenre_2\n');
          
          for t = 1:length(onsets)
-             fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\n', ...
-                 onsets(t,:), 0, 'self',rt(t,:),choice(t,:),outcome(t,:),value1(t,:),value2(t,:),value_c(t,:),W(1,:));
+             fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t', ...
+                 onsets(t,:), 0, 'self',rt(t,:),choice(t,:),outcome(t,:),value_c(t,:),value1(t,:),value2(t,:),W(1,:));
+             
+            stim_1 = options(t,1);
+            valence_1 = movies(stim_1).valence;
+            setting_1 = movies(stim_1).setting;
+            genre_1 = movies(stim_1).genre;
+
+            stim_2 = options(t,2);
+            valence_2 = movies(stim_2).valence;
+            setting_2 = movies(stim_2).setting;
+            genre_2 = movies(stim_2).genre;
+            
+            % print second round of stuff
+            fprintf(o,'%i\t%s\t%s\t%s\t%i\t%s\t%s\t%s\n', ...
+                stim_1, valence_1, setting_1, genre_1, stim_2, valence_2, setting_2, genre_2);
          end
          
          fclose(o);

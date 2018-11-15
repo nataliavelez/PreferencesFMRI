@@ -208,11 +208,26 @@ for s = 1
          outfile = sprintf('training_phase_RL/%s.tsv',behav_path(r).name(1:end-4));
          o = fopen(outfile,'w+');
          
-         fprintf(o, 'onset\tduration\ttrial_type\trt\tchoice\toutcome\tPE\tValue1\tValue2\tValue_c\tW1\tW2\tW3\n');
+         fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\toutcome\tPE\tValue_c\tValue1\tValue2\tW1\tW2\tW3\t');
+         fprintf(o, 'stim_1\tvalence_1\tsetting_1\tgenre_1\tstim_2\tvalence_2\tsetting_2\tgenre_2\n');
          
          for t = 1:length(onsets)
-             fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\n', ...
-                 onsets(t,:), 0, 'self',rt(t,:),choice(t,:),outcome(t,:),PE(t,:),value1(t,:),value2(t,:),value_c(t,:),W(t,:));
+             fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t', ...
+                 onsets(t,:), 0, 'self',rt(t,:),choice(t,:),outcome(t,:),PE(t,:),value_c(t,:),value1(t,:),value2(t,:),W(t,:));
+             
+             stim_1 = thisData.Data.options(t,1);
+             valence_1 = movies(stim_1).valence;
+             setting_1 = movies(stim_1).setting;
+             genre_1 = movies(stim_1).genre;
+             
+             stim_2 = thisData.Data.options(t,2);
+             valence_2 = movies(stim_2).valence;
+             setting_2 = movies(stim_2).setting;
+             genre_2 = movies(stim_2).genre;
+             
+            % print second round of stuff
+            fprintf(o,'%i\t%s\t%s\t%s\t%i\t%s\t%s\t%s\n', ...
+                stim_1, valence_1, setting_1, genre_1, stim_2, valence_2, setting_2, genre_2);
          end
          
          fclose(o);

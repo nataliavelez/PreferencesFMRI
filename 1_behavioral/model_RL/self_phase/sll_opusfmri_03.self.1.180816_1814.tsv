@@ -1,57 +1,57 @@
-onset	duration	trial_type	rt	choice	self_value1	self_value2	self_value_c
-4.017	0.000	self	2.552	1	-0.015	0.269	-0.015
-11.400	0.000	self	NaN	NaN	NaN	NaN	NaN
-20.883	0.000	self	NaN	NaN	NaN	NaN	NaN
-30.667	0.000	self	NaN	NaN	NaN	NaN	NaN
-39.383	0.000	self	NaN	NaN	NaN	NaN	NaN
-47.300	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
-NaN	0.000	self	NaN	NaN	NaN	NaN	NaN
+onset	duration	trial_type	response_time	choice	self_value_c	self_value1	self_value2	stim_1	valence_1	setting_1	genre_1	stim_2	valence_2	setting_2	genre_2
+4.017	0.000	self	2.552	1	-0.015	-0.015	0.269	31	negative	futuristic	action	27	negative	futuristic	romance
+11.400	0.000	self	NaN	NaN	NaN	NaN	NaN	19	negative	historical	romance	11	positive	futuristic	romance
+20.883	0.000	self	NaN	NaN	NaN	NaN	NaN	30	negative	futuristic	action	3	positive	historical	romance
+30.667	0.000	self	NaN	NaN	NaN	NaN	NaN	31	negative	futuristic	action	11	positive	futuristic	romance
+39.383	0.000	self	NaN	NaN	NaN	NaN	NaN	3	positive	historical	romance	11	positive	futuristic	romance
+47.300	0.000	self	NaN	NaN	NaN	NaN	NaN	24	negative	historical	action	27	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	13	positive	futuristic	action	17	negative	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	13	positive	futuristic	action	31	negative	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	11	positive	futuristic	romance	26	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	13	positive	futuristic	action	27	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	13	positive	futuristic	action	11	positive	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	19	negative	historical	romance	8	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	4	positive	historical	romance	26	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	17	negative	historical	romance	21	negative	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	6	positive	historical	action	13	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	24	negative	historical	action	9	positive	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	27	negative	futuristic	romance	4	positive	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	3	positive	historical	romance	26	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	11	positive	futuristic	romance	24	negative	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	6	positive	historical	action	9	positive	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	17	negative	historical	romance	6	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	4	positive	historical	romance	6	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	24	negative	historical	action	30	negative	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	21	negative	historical	action	8	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	17	negative	historical	romance	31	negative	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	26	negative	futuristic	romance	6	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	21	negative	historical	action	30	negative	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	11	positive	futuristic	romance	17	negative	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	8	positive	historical	action	27	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	31	negative	futuristic	action	16	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	3	positive	historical	romance	13	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	21	negative	historical	action	19	negative	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	26	negative	futuristic	romance	21	negative	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	8	positive	historical	action	26	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	3	positive	historical	romance	19	negative	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	21	negative	historical	action	11	positive	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	16	positive	futuristic	action	17	negative	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	26	negative	futuristic	romance	16	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	8	positive	historical	action	4	positive	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	8	positive	historical	action	31	negative	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	30	negative	futuristic	action	26	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	9	positive	futuristic	romance	8	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	3	positive	historical	romance	6	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	8	positive	historical	action	16	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	6	positive	historical	action	24	negative	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	21	negative	historical	action	13	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	17	negative	historical	romance	3	positive	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	4	positive	historical	romance	13	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	9	positive	futuristic	romance	26	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	30	negative	futuristic	action	16	positive	futuristic	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	9	positive	futuristic	romance	21	negative	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	8	positive	historical	action	17	negative	historical	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	17	negative	historical	romance	24	negative	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	17	negative	historical	romance	26	negative	futuristic	romance
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	11	positive	futuristic	romance	6	positive	historical	action
+NaN	0.000	self	NaN	NaN	NaN	NaN	NaN	27	negative	futuristic	romance	11	positive	futuristic	romance
