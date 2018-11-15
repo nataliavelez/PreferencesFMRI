@@ -57,8 +57,7 @@ for (f in train_files) {
            value_right = Value2,
            valence = W1,
            setting = W2,
-           genre = W3,
-           response_time = rt) %>%
+           genre = W3) %>%
     select(c(subject, run, trial, onset, duration, trial_type, response_time, choice, outcome, value_chosen, value_unchosen, everything()))
   
   train_data = plyr::rbind.fill(train_data, tmp_data)
@@ -90,8 +89,7 @@ for (f in test_files) {
            value_right = Value2,
            valence = W1,
            setting = W2,
-           genre = W3,
-           response_time = rt) %>%
+           genre = W3) %>%
     select(c(subject, run, trial, onset, duration, trial_type, response_time, choice, outcome, value_chosen, value_unchosen, everything()))
   
   test_data = plyr::rbind.fill(test_data, tmp_data)
@@ -250,6 +248,7 @@ cosine_similarity = function(v1, v2) {
 
 train_final = train_features %>%
   group_by(subject) %>%
+  drop_na() %>%
   filter(trial == max(trial)) %>%
   select(-trial) %>%
   left_join(sim_data, by=c('subject', 'dimension')) %>%

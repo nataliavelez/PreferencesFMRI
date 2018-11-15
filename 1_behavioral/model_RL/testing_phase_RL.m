@@ -78,7 +78,9 @@ for s = 1
          end
    
          % create TSV file
-         outfile = sprintf('testing_phase_RL/%s.tsv',behav_path(r).name(1:end-4));
+        sub_no = subj_id(end-1:end);
+        outfile = sprintf('/scratch/groups/hyo/OPUS/BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'test', r);
+        
          o = fopen(outfile,'w+');
          
          fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\toutcome\tValue_c\tValue1\tValue2\tW1\tW2\tW3\tstim_1\tvalence_1\tsetting_1\tgenre_1\tstim_2\tvalence_2\tsetting_2\tgenre_2\n');

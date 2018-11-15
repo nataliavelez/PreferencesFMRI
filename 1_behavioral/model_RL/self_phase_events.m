@@ -200,7 +200,9 @@ for s = 1
         
         %onset duration trial_type rt choice self_value1 self_value2 self_value_c
         % create TSV file
-        outfile = sprintf('self_phase/%s.tsv',behav_path(r).name(1:end-4));
+        sub_no = subj_id(end-1:end);
+        outfile = sprintf('/scratch/groups/hyo/OPUS/BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'self', r);
+                
         o = fopen(outfile,'w+');
         
         fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\tself_value_c\tself_value1\tself_value2\tstim_1\tvalence_1\tsetting_1\tgenre_1\tstim_2\tvalence_2\tsetting_2\tgenre_2\n');

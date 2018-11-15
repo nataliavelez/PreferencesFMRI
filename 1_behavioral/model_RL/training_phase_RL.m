@@ -205,7 +205,9 @@ for s = 1
          start_trial = start_trial + length(onsets);
          
          % create TSV file
-         outfile = sprintf('training_phase_RL/%s.tsv',behav_path(r).name(1:end-4));
+         sub_no = subj_id(end-1:end);
+         outfile = sprintf('/scratch/groups/hyo/OPUS/BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'train', r);
+         
          o = fopen(outfile,'w+');
          
          fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\toutcome\tPE\tValue_c\tValue1\tValue2\tW1\tW2\tW3\t');
@@ -225,13 +227,13 @@ for s = 1
              setting_2 = movies(stim_2).setting;
              genre_2 = movies(stim_2).genre;
              
-            % print second round of stuff
-            fprintf(o,'%i\t%s\t%s\t%s\t%i\t%s\t%s\t%s\n', ...
-                stim_1, valence_1, setting_1, genre_1, stim_2, valence_2, setting_2, genre_2);
+             % print second round of stuff
+             fprintf(o,'%i\t%s\t%s\t%s\t%i\t%s\t%s\t%s\n', ...
+                 stim_1, valence_1, setting_1, genre_1, stim_2, valence_2, setting_2, genre_2);
          end
          
          fclose(o);
-        
+         
      end
      
      
