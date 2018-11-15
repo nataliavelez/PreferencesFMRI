@@ -19,7 +19,9 @@ function training_phase_RL(subj_id)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 addpath(genpath('utils/'))
 
-dirs.session = '../../../inlab/data_session';
+% dirs.session = '../../../inlab/data_session';
+dirs.session = '/scratch/groups/hyo/OPUS/session_data';
+
 
 % subj_id = 'sll_opusfmri_01';
 

@@ -15,8 +15,8 @@ function self_phase_events(subj_id)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 addpath(genpath('utils/'))
 
-dirs.prescreen = '../../../inlab/data_prescreen';
-dirs.session = '../../../inlab/data_session';
+dirs.prescreen = '/scratch/groups/hyo/OPUS/prescreen_data';
+dirs.session = '/scratch/groups/hyo/OPUS/session_data';
 
 
 % subj_id = 'sll_opusfmri_01';
