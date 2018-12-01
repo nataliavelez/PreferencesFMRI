@@ -1,4 +1,4 @@
-# Learning and generalizing based on others' preferenes
+# Learning and predicting other people's preferenes
 Analysis scripts
 
 Directories:
