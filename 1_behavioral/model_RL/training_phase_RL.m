@@ -190,7 +190,8 @@ for s = 1
          clear onsets duration trial_type rt choice outcome PE value1 value2 value_c W
          
          onsets = thisData.Data.true_ons' - 6;
-         duration = zeros(length(onsets), 1);
+         %duration = zeros(length(onsets), 1);
+         duration = thisData.Data.dur';
          trial_type = 'training_phase';
          rt = thisData.Data.rt';
          choice = thisData.Data.subject_choice';
@@ -217,7 +218,7 @@ for s = 1
          
          for t = 1:length(onsets)
              fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t', ...
-                 onsets(t,:), 0, 'self',rt(t,:),choice(t,:),outcome(t,:),PE(t,:),value_c(t,:),value1(t,:),value2(t,:),W(t,:));
+                 onsets(t,:), duration(t,:), 'self',rt(t,:),choice(t,:),outcome(t,:),PE(t,:),value_c(t,:),value1(t,:),value2(t,:),W(t,:));
              
              stim_1 = thisData.Data.options(t,1);
              valence_1 = movies(stim_1).valence;

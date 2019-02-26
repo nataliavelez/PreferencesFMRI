@@ -172,7 +172,8 @@ for s = 1
         thisData = load(fullfile(dirs.session,behav_path(r).name));
         
         onsets = thisData.Data.true_ons' - 6;
-        duration = zeros(length(onsets), 1);
+        % duration = zeros(length(onsets), 1);
+        duration = thisData.Data.dur';
         trial_type = 'self_phase';
         rt = thisData.Data.rt';
         choice = thisData.Data.subject_choice';
@@ -210,7 +211,7 @@ for s = 1
         for t = 1:length(options)
             % print first round of stuff
             fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t', ...
-                onsets(t,:), 0, 'self',rt(t,:),choice(t,:),self_value_c(t,:),self_value1(t,:),self_value2(t,:));
+                onsets(t,:), duration(t,:), 'self',rt(t,:),choice(t,:),self_value_c(t,:),self_value1(t,:),self_value2(t,:));
             
             stim_1 = options(t,1);
             valence_1 = movies(stim_1).valence;
