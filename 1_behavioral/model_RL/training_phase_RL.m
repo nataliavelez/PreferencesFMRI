@@ -19,8 +19,10 @@ function training_phase_RL(subj_id)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 addpath(genpath('utils/'))
 
-% dirs.session = '../../../inlab/data_session';
-dirs.session = '/scratch/groups/hyo/OPUS/session_data';
+% basepath = '../../../inlab';
+basepath = '/scratch/groups/hyo/OPUS/';
+
+dirs.session = fullfile(basepath,'session_data');
 
 
 % subj_id = 'sll_opusfmri_01';
@@ -209,7 +211,7 @@ for s = 1
          
          % create TSV file
          sub_no = subj_id(end-1:end);
-         outfile = sprintf('/scratch/groups/hyo/OPUS/BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'train', r);
+         outfile = fullfile(basepath,sprintf('BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'train', r));
          
          o = fopen(outfile,'w+');
          
