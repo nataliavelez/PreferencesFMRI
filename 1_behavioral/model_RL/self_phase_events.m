@@ -15,8 +15,11 @@ function self_phase_events(subj_id)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 addpath(genpath('utils/'))
 
-dirs.prescreen = '/scratch/groups/hyo/OPUS/prescreen_data';
-dirs.session = '/scratch/groups/hyo/OPUS/session_data';
+% basepath = '../../../inlab/';
+basepath = '/scratch/groups/hyo/OPUS/';
+
+dirs.prescreen = fullfile(basepath,'prescreen_data');
+dirs.session = fullfile(basepath,'session_data');
 
 
 % subj_id = 'sll_opusfmri_01';
@@ -164,9 +167,11 @@ end
 
 Fit.Result.BestFit
 
+save(sprintf('modelfits/%s_SelfPhase.mat',subj_id),'Fit');
+
 %% Get value and timing information
 for s = 1
-
+    
     behav_path = dir(fullfile(dirs.session,sprintf('%s*.self*.mat',subj_id)));
     for r = 1:length(behav_path)
         thisData = load(fullfile(dirs.session,behav_path(r).name));
@@ -202,7 +207,22 @@ for s = 1
         %onset duration trial_type rt choice self_value1 self_value2 self_value_c
         % create TSV file
         sub_no = subj_id(end-1:end);
-        outfile = sprintf('/scratch/groups/hyo/OPUS/BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'self', r)
+        
+        % Make directories if they don't exist
+        folder = fullfile(basepath,sprintf('BIDS_data/sub-%s/',sub_no));
+        
+        if exist(folder) ~= 7
+            mkdir(folder)
+        end
+        
+        folder = fullfile(basepath,sprintf('BIDS_data/sub-%s/func',sub_no));
+
+        if exist(folder) ~= 7
+            mkdir(folder)
+        end
+        
+        % output path
+        outfile = fullfile(basepath,sprintf('BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'self', r));
                 
         o = fopen(outfile,'w+');
         

@@ -7,17 +7,14 @@
 
 
 
-function testing_phase_RL(subj_id)
+function testing_phase_RL_nv(subj_id)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                   Set Parameters                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 addpath(genpath('utils/'))
 
-% basepath = '../../../inlab/';
-basepath = '/scratch/groups/hyo/OPUS/';
-
-dirs.session = fullfile(basepath,'session_data');
-
+dirs.session = '/scratch/groups/hyo/OPUS/session_data';
+%dirs.session = '../../../inlab/data_session';
 % subj_id = 'sll_opusfmri_01';
 
 TR = 2;
@@ -30,9 +27,6 @@ load('movie_info.mat');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                             Calculate value of each stimulus                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load(sprintf('modelfits/%s_SelfPhase.mat',subj_id));
-SelfFit = Fit; 
-
 load(sprintf('modelfits/%s_train_RL3feature.mat',subj_id));
 
 %% Get value and timing information
@@ -82,31 +76,18 @@ for s = 1
                      value_c(t) = value2(t);
              end
          end
-         
-         %%%%%%%%%%%%%%%%%%%%%%%% FIND SELF VALUE %%%%%%%%%%%%%%%%%%%%%%%%%%
-         opt_parms(1) = SelfFit.Result.BestFit(s,2);
-         opt_parms(2) = SelfFit.Result.BestFit(s,3);
-         opt_parms(3) = SelfFit.Result.BestFit(s,4);
-         opt_parms(4) = SelfFit.Result.BestFit(s,5);
-         
-         [lik,latents] = MLL_train(choice, option1, option2,SelfFit.Priors, opt_parms);
-         
-         self_value1 = latents.V(:,1);
-         self_value2 = latents.V(:,2);
-         self_value_c = latents.Vchosen;
-         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        % create TSV file
+   
+         % create TSV file
         sub_no = subj_id(end-1:end);
-        outfile = fullfile(basepath, sprintf('BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'test', r));
+        outfile = sprintf('/scratch/groups/hyo/OPUS/BIDS_data/sub-%s/func/sub-%s_task-%s_run-0%i_events.tsv', sub_no, sub_no, 'test', r);
         
          o = fopen(outfile,'w+');
          
-         fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\toutcome\tValue_c\tValue1\tValue2\tW1\tW2\tW3\tSelfValue_c\tSelfValue1\tSelfValue2\tstim_1\tvalence_1\tsetting_1\tgenre_1\tstim_2\tvalence_2\tsetting_2\tgenre_2\n');
+         fprintf(o, 'onset\tduration\ttrial_type\tresponse_time\tchoice\toutcome\tValue_c\tValue1\tValue2\tW1\tW2\tW3\tstim_1\tvalence_1\tsetting_1\tgenre_1\tstim_2\tvalence_2\tsetting_2\tgenre_2\n');
          
          for t = 1:length(onsets)
-             fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t', ...
-                 onsets(t,:), duration(t,:), 'self',rt(t,:),choice(t,:),outcome(t,:),value_c(t,:),value1(t,:),value2(t,:),W(1,:),self_value_c(t,:),self_value1(t,:),self_value2(t,:));
+             fprintf(o,'%.3f\t%.3f\t%s\t%.3f\t%i\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t%0.3f\t', ...
+                 onsets(t,:), duration(t,:), 'test',rt(t,:),choice(t,:),outcome(t,:),value_c(t,:),value1(t,:),value2(t,:),W(1,:));
              
             stim_1 = options(t,1);
             valence_1 = movies(stim_1).valence;
