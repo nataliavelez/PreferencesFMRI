@@ -83,7 +83,7 @@ for IN_FILE in $IN_FILES; do
 	MEAN_FUNC=${FUNC/preproc/mean}
 	THRESH_FUNC=${FUNC/preproc/thresh}
 	DIL_MASK=${MASK/_brainmask/_dilmask}
-	SMOOTH_FUNC=${FUNC/_preproc/_variant-smoothed_preproc}
+	SMOOTH_FUNC=${FUNC/desc-preproc/desc-smoothed}
 	
 	# Mask functional file
 	fslmaths $IN_FILE -mas $MASK $MASKED_FUNC
