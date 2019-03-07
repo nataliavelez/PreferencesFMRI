@@ -187,7 +187,7 @@ def ModelGrabber(contrasts_file, events_file, confounds_file):
     from json import load as loadjson
 
     # Project dir
-    project = 'SwiSt'
+    project = 'OPUS'
     project_dir = opj(environ['PI_SCRATCH'], project, 'BIDS_data')
 
     ### Load data ###
@@ -216,7 +216,8 @@ def ModelGrabber(contrasts_file, events_file, confounds_file):
                                                   'amplitude': 'amplitudes'})
     modelspec_dict = modelspec_dict.groupby('conditions').aggregate(lambda g: list(g)).reset_index().to_dict('list')
     modelspec_dict.update(confounds)
-    modelspec_dict['amplitudes'] = [a if not all(np.isnan(a)) else np.ones(np.size(a)) for a in modelspec_dict['amplitudes']]
+    if 'amplitudes' in modelspec_dict:
+        modelspec_dict['amplitudes'] = [a if not all(np.isnan(a)) else np.ones(np.size(a)) for a in modelspec_dict['amplitudes']]
     modelspec = Bunch(**modelspec_dict)
     
     ### Contrasts ###

@@ -2,6 +2,7 @@
 *.out
 *.err
 reports/
+crash_reports/
 scratch/
 .DS_Store
 .Rhistory
